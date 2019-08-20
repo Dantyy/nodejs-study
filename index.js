@@ -5,13 +5,13 @@ mongoose.connect('mongodb+srv://qa_registry_feed_readwrite:Test1234@qa-registry-
 
 const Schema = mongoose.Schema;
 const schema = new Schema;
-const MyModel = mongoose.model('feedDetailLog', schema);
+const MyModel = mongoose.model('feedDetailLog', schema, 'feedDetailLog');
 
 
 app.use(async ctx=>{
     // ctx.body = 'The program is running on port 3000'
     console.log("app");
-    MyModel.findOne({}, (err,res) =>{
+    MyModel.findOne({}, (_err,res) =>{
         console.log(res);
         ctx.body = res;
     })
