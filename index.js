@@ -10,13 +10,10 @@ const schema = new Schema;
 const MyModel = mongoose.model('feedDetailLog', schema, 'feedDetailLog');
 
 app.use(router.routes());
-
-app.use(async ctx=>{
-    // ctx.body = 'The program is running on port 3000'
-    const res = await  MyModel.findOne({});
+router.get('/api/registry', async ctx =>{
+    const res = await MyModel.findOne({});
     ctx.body = res;
-    router.get('/api/registry');
-    // ctx.body = res;
 });
+
 
 app.listen(3000);
