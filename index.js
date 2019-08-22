@@ -10,12 +10,8 @@ const MyModel = mongoose.model('feedDetailLog', schema, 'feedDetailLog');
 
 app.use(async ctx=>{
     // ctx.body = 'The program is running on port 3000'
-    // console.log("app");
-
-    await MyModel.findOne({}, (_err,res) =>{
-        ctx.body = res;
-    });
-
+    const res = await  MyModel.findOne({});
+    ctx.body = res;
 });
 
 app.listen(3000);
