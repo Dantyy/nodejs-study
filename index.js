@@ -10,12 +10,12 @@ const router = new Router;
 // const MyModel = mongoose.model('feedDetailLog', schema, 'feedDetailLog');
 
 app.use(router.routes());
-router.get('/api/registry', async ctx =>{
+router.get('/api/registry/:id', async (ctx) =>{
+    const id = ctx.params.id;
     //获取参数
     // const firstName = ctx.query.first_name;
     // const lastName = ctx.query.last_name;
-    const id = ctx.query.ID;
-
+    
     //将获取的参数从接口返回
     ctx.body = {
         status: 'success',
