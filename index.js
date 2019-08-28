@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Router = require("koa-router");
 const router = new Router();
 const bodyParser = require("koa-bodyparser");
-mongoose.connect('mongodb://localhost/testDB', {useNewUrlParser: true});
+mongoose.connect('mongodb://172.26.10.138:27017/study', {useNewUrlParser: true});
 
 const Schema = mongoose.Schema;
 const schema = new Schema;
@@ -15,7 +15,7 @@ app.use(bodyParser())
    .use(router.allowedMethods());
 
 router.post('/api/create/', async (ctx)=>{
-    const name = ctx.query.name;
+    const name = ctx.body.name;
     console.log(name);
 
     const res = await MyModel.create({
@@ -24,11 +24,10 @@ router.post('/api/create/', async (ctx)=>{
     res;
 
     
-    //如何插入到mongoDB??
 
     ctx.body={
         status:"success",
-        // name: name
+        name: name
     };
 });
 app.listen(3000);
