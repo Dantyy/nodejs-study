@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Router = require("koa-router");
 const router = new Router();
 const bodyParser = require("koa-bodyparser");
-mongoose.connect('mongodb://172.26.10.138:27017/study', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost/study', {useNewUrlParser: true});
 mongoose.set('useFindAndModify', false); //It is necessary for findOneAndUpdate,findOneAndDelete......
 
 const Schema = mongoose.Schema;
@@ -32,7 +32,7 @@ router.get('/api/get', async (ctx)=>{
 
 //get方法取id：
 router.get('/api/get/:id', async (ctx)=>{
-    const id = ctx.params.name;
+    const id = ctx.params.id;
     console.log(id);
     ctx.body = {
         status: "success",
@@ -78,3 +78,11 @@ router.del('/api/delete', async (ctx)=>{
 
 
 app.listen(3000);
+
+
+
+
+
+
+
+//mongoose.connect('mongodb://172.26.10.138:27017/study', {useNewUrlParser: true});
