@@ -1,4 +1,11 @@
 
+app.use(bodyParser())
+   .use(router.routes())
+   .use(router.allowedMethods());
+
+app.listen(3000);
+
+
 
 router.get('/api/get', async (ctx)=>{
 //get方法取参
