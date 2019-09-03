@@ -1,12 +1,8 @@
-const module = require('module');
-const Module = new module;
 
-Schema =>{
-    const Schema = mongoose.Schema;
-    const schema = new Schema({
+exports.schema = Schema =>{
+    const schema = new mongoose.Schemas({
     name: String,
     age: Number
-});
+    });
+    const MyModel = mongoose.model('test', schema, 'test');
 };
-
-Module.exports = Schema;
