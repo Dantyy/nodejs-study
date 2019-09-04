@@ -1,6 +1,7 @@
+const Router = require("koa-router");
+const router = new Router();
 const controllers = require('../controllers/controllers.js');
-const lib = require('../lib/lib.js');
-const router = lib.router;
+
 
 exports.getName = router.get('/api/get', controllers.getQuery);
 //get方法取参

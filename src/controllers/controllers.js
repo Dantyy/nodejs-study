@@ -1,3 +1,9 @@
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/study', {useNewUrlParser: true});
+mongoose.set('useFindAndModify', false); //It is necessary for findOneAndUpdate,findOneAndDelete......
+const Schemas = require('../schemas/schemas.js')
+const MyModel = new Schemas.MyModel;
+
 const getQuery = async (ctx)=>{
     const name = ctx.query.name;
     const age = ctx.query.age;
