@@ -22,6 +22,8 @@ app.use(bodyParser())
 router.get('/api/get', async (ctx)=>{
     const name = ctx.query.name;
     const age = ctx.query.age;
+    console.log(name);
+    console.log(age);
     ctx.body = {
         status: "success",
         opration: "get parameters",
