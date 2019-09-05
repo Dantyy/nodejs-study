@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/study', {useNewUrlParser: true});
-mongoose.set('useFindAndModify', false); //It is necessary for findOneAndUpdate,findOneAndDelete......
-const Schemas = require('../schemas/schemas.js')
-const MyModel = new Schemas.MyModel;
+const MyModel = require('../schemas/schemas');
+const bodyParser = require("koa-bodyparser");
+module.exports = bodyParser;
 
 const getQuery = async (ctx)=>{
     const name = ctx.query.name;
     const age = ctx.query.age;
+    console.log(name);
+    console.log(age);
     ctx.body = {
         status: "success",
         opration: "get parameters",
@@ -16,7 +16,7 @@ const getQuery = async (ctx)=>{
 };
 module.exports = getQuery;
 
-const getId = async (ctx)=>{
+const getParser = async (ctx)=>{
     const id = ctx.params.id;
     console.log(id);
     ctx.body = {
@@ -25,9 +25,9 @@ const getId = async (ctx)=>{
         id: id,
     };
 };
-module.exports = getId;
+module.exports = getParser;
 
-const insertAData = async (ctx)=>{
+const createAData = async (ctx)=>{
     const body = ctx.request.body;
     console.log(body);
     const res = await MyModel.create(body);
@@ -37,9 +37,9 @@ const insertAData = async (ctx)=>{
         res
     };
 };
-module.exports = insertAData;
+module.exports = createAData;
 
-const updateAData =  async (ctx)=>{
+const updateAData = async (ctx)=>{
     const body = ctx.request.body;
     console.log(body);
     const res = await MyModel.findOneAndUpdate({}, body);
