@@ -1,6 +1,6 @@
 const MyModel = require('../schemas/schemas');
 const bodyParser = require("koa-bodyparser");
-module.exports = bodyParser;
+module.exports = bodyParser();
 
 const getQuery = async (ctx)=>{
     const name = ctx.query.name;

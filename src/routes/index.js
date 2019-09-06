@@ -18,4 +18,4 @@ router.put('/api/update', updateAData);
 //put方法 请求MongoDB数据库删除数据：
 router.del('/api/delete', deleteAData);
 
-module.exports = router;
+module.exports = router();
