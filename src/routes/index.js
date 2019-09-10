@@ -1,21 +1,19 @@
 const Router = require("koa-router");
 const router = new Router();
-const {getQuery, getParser, createAData, updateAData, deleteAData} = require('../controllers/controllers');
 
+const controllers = require('../controllers/controllers');
 
 //get方法取参：
-router.get('/api/get', getQuery);
+router.get('/api/get', controllers.getQuery);
 
 //get方法取id：
-router.get('/api/get/:id', getParser);
+router.get('/api/get/:id', controllers.getParser);
 
 //post方法 请求MongoDB数据库插入数据：
-router.post('/api/create', createAData);
+router.post('/api/create', controllers.createAData);
 
 //put方法 请求MongoDB数据库更新数据：
-router.put('/api/update', updateAData);
+router.put('/api/update', controllers.updateAData);
 
 //put方法 请求MongoDB数据库删除数据：
-router.del('/api/delete', deleteAData);
-
-module.exports = router();
+router.del('/api/delete', controllers.deleteAData);

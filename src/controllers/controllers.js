@@ -1,6 +1,8 @@
 const MyModel = require('../schemas/schemas');
-const bodyParser = require("koa-bodyparser");
-module.exports = bodyParser();
+const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false); //It is necessary for findOneAndUpdate,findOneAndDelete......
+
+module.exports = { getQuery, getParser, createAData, updateAData, deleteAData };
 
 const getQuery = async (ctx)=>{
     const name = ctx.query.name;
@@ -14,7 +16,6 @@ const getQuery = async (ctx)=>{
         age: age
     };
 };
-module.exports = getQuery;
 
 const getParser = async (ctx)=>{
     const id = ctx.params.id;
@@ -25,7 +26,6 @@ const getParser = async (ctx)=>{
         id: id,
     };
 };
-module.exports = getParser;
 
 const createAData = async (ctx)=>{
     const body = ctx.request.body;
@@ -37,7 +37,6 @@ const createAData = async (ctx)=>{
         res
     };
 };
-module.exports = createAData;
 
 const updateAData = async (ctx)=>{
     const body = ctx.request.body;
@@ -49,7 +48,6 @@ const updateAData = async (ctx)=>{
         res
     };
 };
-module.exports = updateAData;
 
 const deleteAData = async (ctx)=>{
     const res = await MyModel.findOneAndDelete({});
@@ -60,4 +58,3 @@ const deleteAData = async (ctx)=>{
         res
     };
 };
-module.exports = deleteAData;

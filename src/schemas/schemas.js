@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/study', {useNewUrlParser: true});
-mongoose.set('useFindAndModify', false); //It is necessary for findOneAndUpdate,findOneAndDelete......
 
 const Schema = mongoose.Schema;
 const schema = new Schema({
@@ -9,5 +7,4 @@ const schema = new Schema({
 });
 const MyModel = mongoose.model('test', schema, 'test');
 
-module.exports = mongoose;
 module.exports = MyModel;

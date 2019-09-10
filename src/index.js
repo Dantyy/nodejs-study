@@ -1,12 +1,15 @@
 const Koa = require('koa');
+const bodyParser = require("koa-bodyparser");
+const router = require('./routes');
+const mongoose = require('mongoose');
+const{ mongoConfig, port} = require('./config');
+
+mongoose.connect(`mongodb://${mongoConfig.host}:${mongoConfig.port}/${mongoConfig.database}`, {useNewUrlParser: true});
 const app = new Koa();
-const Router = require('./routes');
-const router = new Router();
-const BodyParser = require('./controllers/controllers');
-const bodyParser = new BodyParser();
 
 app.use(bodyParser())
    .use(router.routes())
    .use(router.allowedMethods());
 
-app.listen(3000);
+app.listen(port, () => console.log('listen on port : ${port}'));
+
