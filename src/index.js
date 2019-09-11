@@ -11,5 +11,5 @@ app.use(bodyParser())
    .use(router.routes())
    .use(router.allowedMethods());
 
-app.listen(port, () => console.log('listen on port : ${port}'));
+app.listen(port, () => console.log(`listen on port : ${port}`));
 

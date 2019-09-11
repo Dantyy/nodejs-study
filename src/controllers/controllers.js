@@ -2,8 +2,6 @@ const MyModel = require('../schemas/schemas');
 const mongoose = require('mongoose');
 mongoose.set('useFindAndModify', false); //It is necessary for findOneAndUpdate,findOneAndDelete......
 
-module.exports = { getQuery, getParser, createAData, updateAData, deleteAData };
-
 const getQuery = async (ctx)=>{
     const name = ctx.query.name;
     const age = ctx.query.age;
@@ -58,3 +56,5 @@ const deleteAData = async (ctx)=>{
         res
     };
 };
+
+module.exports = { getQuery, getParser, createAData, updateAData, deleteAData };
