@@ -1,8 +1,7 @@
-const MyModel = require('../schemas/schemas');
-const mongoose = require('mongoose');
-mongoose.set('useFindAndModify', false); //It is necessary for findOneAndUpdate,findOneAndDelete......
+const MyService = require('../service/service');
+const myService = new MyService();
 
-const getQuery = async (ctx)=>{
+const getQuery = async (ctx) => {
     const name = ctx.query.name;
     const age = ctx.query.age;
     console.log(name);
@@ -15,7 +14,7 @@ const getQuery = async (ctx)=>{
     };
 };
 
-const getParser = async (ctx)=>{
+const getParser = async (ctx) => {
     const id = ctx.params.id;
     console.log(id);
     ctx.body = {
@@ -25,10 +24,11 @@ const getParser = async (ctx)=>{
     };
 };
 
-const createAData = async (ctx)=>{
+const createAData = async (ctx) => {
     const body = ctx.request.body;
     console.log(body);
-    const res = await MyModel.create(body);
+    const res = await myService.createAData(body);
+    console.log(res);
     ctx.body = {
         status: "success",
         opration: "create",
@@ -36,10 +36,10 @@ const createAData = async (ctx)=>{
     };
 };
 
-const updateAData = async (ctx)=>{
+const updateAData = async (ctx) => {
     const body = ctx.request.body;
     console.log(body);
-    const res = await MyModel.findOneAndUpdate({}, body);
+    const res = await myService.updateAData(body);
     ctx.body = {
         status: "success",
         opration: "update",
@@ -47,8 +47,8 @@ const updateAData = async (ctx)=>{
     };
 };
 
-const deleteAData = async (ctx)=>{
-    const res = await MyModel.findOneAndDelete({});
+const deleteAData = async (ctx) => {
+    const res = await myService.deleteAData();
     console.log(res);
     ctx.body = {
         status: "success",
