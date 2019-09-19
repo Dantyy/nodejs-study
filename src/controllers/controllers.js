@@ -1,60 +1,68 @@
 const MyService = require('../service/service');
 const myService = new MyService();
 
-const getQuery = async (ctx) => {
-    const name = ctx.query.name;
-    const age = ctx.query.age;
-    console.log(name);
-    console.log(age);
-    ctx.body = {
-        status: "success",
-        opration: "get parameters",
-        name: name,
-        age: age
+class controllers {
+    //get the parameter. 
+    getQuery = async (ctx) => {
+        const name = ctx.query.name;
+        const age = ctx.query.age;
+        console.log(name);
+        console.log(age);
+        ctx.body = {
+            status: "success",
+            opration: "get parameters",
+            name: name,
+            age: age
+        };
+        return this.getQuery;
     };
-};
 
-const getParser = async (ctx) => {
-    const id = ctx.params.id;
-    console.log(id);
-    ctx.body = {
-        status: "success",
-        opration: "get id",
-        id: id,
+    getParser = async (ctx) => {
+        const id = ctx.params.id;
+        console.log(id);
+        ctx.body = {
+            status: "success",
+            opration: "get id",
+            id: id,
+        };
+        return this.getParser;
     };
-};
 
-const createAData = async (ctx) => {
-    const body = ctx.request.body;
-    console.log(body);
-    const res = await myService.createAData(body);
-    console.log(res);
-    ctx.body = {
-        status: "success",
-        opration: "create",
-        res
+    createAData = async (ctx) => {
+        const body = ctx.request.body;
+        console.log(body);
+        const res = await myService.createAData(body);
+        console.log(res);
+        ctx.body = {
+            status: "success",
+            opration: "create",
+            res
+        };
+        return this.createAData;
     };
-};
 
-const updateAData = async (ctx) => {
-    const body = ctx.request.body;
-    console.log(body);
-    const res = await myService.updateAData(body);
-    ctx.body = {
-        status: "success",
-        opration: "update",
-        res
+    updateAData = async (ctx) => {
+        const body = ctx.request.body;
+        console.log(body);
+        const res = await myService.updateAData(body);
+        ctx.body = {
+            status: "success",
+            opration: "update",
+            res
+        };
+        return this.updateAData;
     };
-};
 
-const deleteAData = async (ctx) => {
-    const res = await myService.deleteAData();
-    console.log(res);
-    ctx.body = {
-        status: "success",
-        opration: "delete",
-        res
+    deleteAData = async (ctx) => {
+        const res = await myService.deleteAData();
+        console.log(res);
+        ctx.body = {
+            status: "success",
+            opration: "delete",
+            res
+        };
+        return this.deleteAData;
     };
-};
+}
 
-module.exports = { getQuery, getParser, createAData, updateAData, deleteAData };
+module.exports = controllers ;
