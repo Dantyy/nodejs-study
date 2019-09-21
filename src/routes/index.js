@@ -1,7 +1,8 @@
 const Router = require("koa-router");
 const router = new Router();
 
-const controllers = require('../controllers/controllers');
+const Controllers = require('../controllers/controllers');
+const controllers = new Controllers();
 
 //get方法取参：
 router.get('/api/get', controllers.getQuery);

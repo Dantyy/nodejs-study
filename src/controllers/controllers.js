@@ -3,7 +3,7 @@ const myService = new MyService();
 
 class controllers {
     //get the parameter. 
-    getQuery = async (ctx) => {
+    async getQuery (ctx) {
         const name = ctx.query.name;
         const age = ctx.query.age;
         console.log(name);
@@ -14,10 +14,9 @@ class controllers {
             name: name,
             age: age
         };
-        return this.getQuery;
     };
 
-    getParser = async (ctx) => {
+    async getParser (ctx) {
         const id = ctx.params.id;
         console.log(id);
         ctx.body = {
@@ -25,10 +24,9 @@ class controllers {
             opration: "get id",
             id: id,
         };
-        return this.getParser;
     };
 
-    createAData = async (ctx) => {
+    async createAData (ctx) {
         const body = ctx.request.body;
         console.log(body);
         const res = await myService.createAData(body);
@@ -38,10 +36,9 @@ class controllers {
             opration: "create",
             res
         };
-        return this.createAData;
     };
 
-    updateAData = async (ctx) => {
+    async updateAData (ctx) {
         const body = ctx.request.body;
         console.log(body);
         const res = await myService.updateAData(body);
@@ -50,10 +47,9 @@ class controllers {
             opration: "update",
             res
         };
-        return this.updateAData;
     };
 
-    deleteAData = async (ctx) => {
+    async deleteAData (ctx) {
         const res = await myService.deleteAData();
         console.log(res);
         ctx.body = {
@@ -61,7 +57,6 @@ class controllers {
             opration: "delete",
             res
         };
-        return this.deleteAData;
     };
 }
 
